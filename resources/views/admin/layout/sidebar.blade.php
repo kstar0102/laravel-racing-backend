@@ -10,11 +10,11 @@
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
                 <li class="active">
-                    <a href="chart.html">
+                    <a href="<?= route('dashboard')?>">
                         <i class="fas fa-chart-bar"></i>ダッシュボード</a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="<?= route('user_index')?>">
                         <i class="fa fa-user"></i>ユーザー</a>
                 </li>
                 <li>

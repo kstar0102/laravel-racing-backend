@@ -23,7 +23,9 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::resource('resources', UserController::class)->names([
-    'index' => 'login_index',
+    'index' => 'user_index',
     'store' => 'login_action'
 ]);
+
+Route::get('delete_user/{id}', [UserController::class, 'destroy']);
 

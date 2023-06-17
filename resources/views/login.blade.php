@@ -49,7 +49,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label>ログインID</label>
-                                    <input class="au-input au-input--full" type="text" name="id" placeholder="ID">
+                                    <input class="au-input au-input--full" type="text" name="login_id" placeholder="ID">
                                 </div>
                                 <div class="form-group">
                                     <label>パスワード</label>

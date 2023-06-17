@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -12,7 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('admin.content.user', ['users' => $users]);
     }
 
     /**
@@ -20,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -28,7 +30,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->route('dashboard');
+        // Validate input data
+        $this->validate($request, [
+            'login_id' => 'required',
+            'password' => 'required',
+        ]);
+        // Attempt to log in the user
+        $credentials = $request->only('login_id', 'password');
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            return redirect()->route('dashboard');
+        } else {
+            // Authentication failed...
+            return back()->withErrors(['login_id' => 'Invalid login credentials.']);
+        }
+
     }
 
     /**
@@ -60,6 +76,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        User::where('id', $id)->delete();
+        $this->index();
     }
 }
