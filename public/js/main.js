@@ -11,7 +11,7 @@
       var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+          labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月'],
           type: 'line',
           datasets: [{
             data: [78, 81, 80, 45, 34, 12, 40],
@@ -262,7 +262,7 @@
       var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', ''],
+          labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
           datasets: [
             {
               label: 'My First dataset',
@@ -360,8 +360,8 @@
             }
           ],
           labels: [
-            'Products',
-            'Services'
+            '競馬',
+            'その他'
           ]
         },
         options: {

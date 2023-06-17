@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,5 +20,10 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('admin/content/dashboard');
-});
+})->name('dashboard');
+
+Route::resource('resources', UserController::class)->names([
+    'index' => 'login_index',
+    'store' => 'login_action'
+]);
 
