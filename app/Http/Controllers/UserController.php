@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Models\User;
 
 class UserController extends Controller
@@ -45,6 +46,24 @@ class UserController extends Controller
             return back()->withErrors(['login_id' => 'Invalid login credentials.']);
         }
 
+    }
+
+    /**
+     * login for mobile
+     */
+
+    public function login()
+    {
+        $credentials = request(['login_id', 'password']);
+
+        if (!$token = JWTAuth::attempt($credentials)) {
+            return response()->json(['error' => 'Invalid credentials'], 401);
+        }
+
+        return response()->json([
+            'token' => $token,
+            'user' => Auth::user()
+        ]);
     }
 
     /**
